@@ -1,4 +1,4 @@
-module github.com/bachtiarfr/pubsub-logger
+module github.com/bachtiarfr/pubsub-logger/v2
 
 go 1.19
 
