@@ -22,14 +22,15 @@ func NewLoggerService(publisher *googlepublisher.Client) *LoggerService {
 	return &LoggerService{publisher: publisher}
 }
 
-func (r LoggerService) PublishReport(ctx context.Context, data entity.Logger) error {
-	if r.publisher != nil {
+func PublishReport(ctx context.Context, data entity.Logger) error {
+	var r *googlepublisher.Client
+	if r != nil {
 		d, err := json.Marshal(data)
 		if err != nil {
 			return errors.Wrap(err, "data logger marshal failed")
 		}
 
-		return r.publisher.Publish(ctx, d)
+		return r.Publish(ctx, d)
 	}
 	return nil
 }
