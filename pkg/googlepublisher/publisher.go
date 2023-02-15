@@ -24,17 +24,17 @@ type Client struct {
 }
 
 func New(ctx context.Context, cfg Config) (*Client, error) {
-	client, err := pubsub.NewClient(ctx, cfg.ProjectID, option.WithCredentialsFile(cfg.CredentialFile))
+	client, err := pubsub.NewClient(ctx, "bachtiar-development", option.WithCredentialsFile("config/bachtiar-development-73ca13e5c16e.json"))
 	if err != nil {
 		return nil, errors.Wrap(err, "new client pubsub error")
 	}
 
-	topic := client.Topic(cfg.TopicID)
+	topic := client.Topic("dev-logger-topic")
 
 	return &Client{
 		client: client,
 		topic:  topic,
-		Enable: cfg.Enable,
+		Enable: true,
 	}, nil
 }
 
@@ -52,7 +52,6 @@ func WithAttributes(attributes map[string]string) PublishOpts {
 
 func (c *Client) Publish(ctx context.Context, message []byte, opts ...PublishOpts) error {
 	publishOpts := PublishOptions{Attributes: make(map[string]string)}
-
 	for _, opt := range opts {
 		opt(&publishOpts)
 	}

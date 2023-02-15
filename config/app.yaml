@@ -1,0 +1,5 @@
+pub_sub:
+  project_id: bachtiar-development
+  credential_file: config/bachtiar-development-73ca13e5c16e.json
+  topic_id: dev-logger-topic
+  subscription_id: dev-logger-sub
