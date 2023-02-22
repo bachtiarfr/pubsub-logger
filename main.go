@@ -41,8 +41,8 @@ func main() {
 	if errPub != nil {
 		fmt.Printf("publish error:", errPub)
 	}
-
 	fmt.Printf("success publish")
+
 }
 
 func PublishReport(ctx context.Context, data map[string]interface{}) error {
