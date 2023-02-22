@@ -33,6 +33,7 @@ func PublishReport(ctx context.Context, data map[string]interface{}) error {
 	if err != nil {
 		return fmt.Errorf("pubsub: result.Get: %v", err)
 	}
+	
 	fmt.Printf("Published a message; msg ID: %v\n", id)
 	return nil
 }
